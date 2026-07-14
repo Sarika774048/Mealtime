@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Mealtime</title>
+
+    <!-- External CSS files -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/menu.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="menu-page">
+
+        <a href="home" class="back-link">← Back to restaurants</a>
+
+        <!-- Restaurant details -->
+        <section class="restaurant-banner">
+            <img
+                id="restaurantImage"
+                class="restaurant-banner-image"
+                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85"
+                alt="Restaurant image">
+
+            <div class="restaurant-banner-content">
+                <h1 id="restaurantName">Restaurant Name</h1>
+
+                <p class="cuisine" id="restaurantCuisine">
+                    Italian, Pizza
+                </p>
+
+                <p class="restaurant-description">
+                    Explore delicious food from this restaurant. Select your favourite
+                    dish and get it delivered fresh to your doorstep.
+                </p>
+
+                <div class="restaurant-details">
+                    <span class="rating" id="restaurantRating">★ 4.5</span>
+                    <span class="detail-pill" id="restaurantEta">⚡ 30–40 min</span>
+                    <span class="detail-pill">₹250 for one</span>
+                    <span class="detail-pill">Open now</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food menu -->
+        <section class="menu-section">
+            <div class="menu-heading">
+                <p>RESTAURANT MENU</p>
+                <h2>What’s available</h2>
+            </div>
+
+            <div class="menu-grid">
+
+                <!-- Food component 1 -->
+                <article class="menu-item-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85"
+                        alt="Margherita Pizza">
+
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Margherita Pizza</h3>
+                            <span class="food-price">₹299</span>
+                        </div>
+
+                        <p>
+                            Tomato sauce, mozzarella cheese, fresh basil, and Italian herbs.
+                        </p>
+
+                        <div class="menu-item-footer">
+                            <span>★ 4.5</span>
+                            <span class="availability">Available</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Food component 2 -->
+                <article class="menu-item-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+                        alt="Chicken Burger">
+
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Chicken Burger</h3>
+                            <span class="food-price">₹199</span>
+                        </div>
+
+                        <p>
+                            Crispy chicken patty with lettuce, cheese, mayonnaise, and fresh buns.
+                        </p>
+
+                        <div class="menu-item-footer">
+                            <span>★ 4.2</span>
+                            <span class="availability">Available</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Food component 3 -->
+                <article class="menu-item-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=900&q=85"
+                        alt="Paneer Butter Masala">
+
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Paneer Butter Masala</h3>
+                            <span class="food-price">₹249</span>
+                        </div>
+
+                        <p>
+                            Soft paneer cubes in a creamy tomato and butter-based Indian gravy.
+                        </p>
+
+                        <div class="menu-item-footer">
+                            <span>★ 4.6</span>
+                            <span class="availability">Available</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Food component 4 -->
+                <article class="menu-item-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=900&q=85"
+                        alt="Chicken Biryani">
+
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Chicken Biryani</h3>
+                            <span class="food-price">₹329</span>
+                        </div>
+
+                        <p>
+                            Aromatic basmati rice with tender chicken, spices, and raita.
+                        </p>
+
+                        <div class="menu-item-footer">
+                            <span>★ 4.7</span>
+                            <span class="availability">Available</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+ 
+</body>
+</html>

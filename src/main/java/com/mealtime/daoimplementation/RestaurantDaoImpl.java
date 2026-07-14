@@ -15,19 +15,19 @@ import com.mealtime.util.DBConnection;
 public class RestaurantDaoImpl implements RestaurantDao {
 
     private static final String INSERT_RESTAURANT_QUERY =
-            "INSERT INTO restaurant(name, address, phone, cuisineType, eta, adminUserId, imagePath) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO restaurants(name, address, phone, cuisine_type, eta, admin_user_id, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     private static final String SELECT_QUERY =
-            "SELECT * FROM restaurant WHERE restaurantId = ?";
+            "SELECT * FROM restaurants WHERE restaurant_id = ?";
 
     private static final String UPDATE_QUERY =
-            "UPDATE restaurant SET name = ?, address = ?, phone = ? WHERE restaurantId = ?";
+            "UPDATE restaurants SET name = ?, address = ?, phone = ? WHERE restaurant_id = ?";
 
     private static final String DELETE_QUERY =
-            "DELETE FROM restaurant WHERE restaurantId = ?";
+            "DELETE FROM restaurants WHERE restaurant_id = ?";
 
     private static final String GET_ALL_RESTAURANT =
-            "SELECT * FROM restaurant";
+            "SELECT * FROM restaurants";
 
     @Override
     public void addRestaurant(Restaurant restaurant) {
@@ -130,19 +130,19 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
         Restaurant restaurant = new Restaurant();
 
-        restaurant.setRestaurantid(rs.getInt("restaurantId"));
+        restaurant.setRestaurantid(rs.getInt("restaurant_id"));
         restaurant.setName(rs.getString("name"));
         restaurant.setAddress(rs.getString("address"));
         restaurant.setPhone(rs.getString("phone"));
         restaurant.setRating(rs.getInt("rating"));
 
         // Change this to setCusineType() if that's what your model uses
-        restaurant.setCusineType(rs.getString("cuisineType"));
+        restaurant.setCusineType(rs.getString("cuisine_type"));
 
-        restaurant.setActive(rs.getBoolean("isActive"));
+        restaurant.setActive(rs.getBoolean("is_active"));
         restaurant.setEta(rs.getString("eta"));
-        restaurant.setAdminUserId(rs.getInt("adminUserId"));
-        restaurant.setImagePath(rs.getString("imagePath"));
+        restaurant.setAdminUserId(rs.getInt("admin_user_id"));
+        restaurant.setImagePath(rs.getString("image_path"));
 
         return restaurant;
     }
