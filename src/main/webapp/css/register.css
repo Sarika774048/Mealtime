@@ -1,118 +1,379 @@
 @charset "UTF-8";
 
+/* ===== MEALTIME — NUTRIBITE SPLIT CARD UI (SHARED STYLES FOR REGISTER & LOGIN) ===== */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: #FBF4EB !important;
+  color: #42341E !important;
 }
 
 body {
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 30px 15px;
-  background: linear-gradient(135deg, #ff7a18, #ffb347);
 }
 
-.register-container {
+.nutribite-card {
   width: 100%;
-  max-width: 460px;
-}
-
-.register-form {
+  max-width: 1060px;
   background: #ffffff;
-  padding: 32px;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 32px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 20px 60px rgba(66, 52, 30, 0.08);
+  border: 1px solid rgba(66, 52, 30, 0.08);
 }
 
-.register-form h1 {
-  color: #e85d04;
-  text-align: center;
+/* LEFT SIDE: SHOWCASE */
+.showcase-side {
+  background: linear-gradient(135deg, #F9F4EC 0%, #F5E8D8 100%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.showcase-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #42341E;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.showcase-logo span {
+  color: #CB4F1B;
+}
+
+.showcase-content {
+  margin: 30px 0;
+}
+
+.showcase-headline {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: #42341E;
+  line-height: 1.15;
   margin-bottom: 8px;
 }
 
-.register-form > p {
+.showcase-subtext {
+  color: #CB4F1B;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.feature-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(203, 79, 27, 0.12);
+  color: #CB4F1B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.feature-text h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #42341E;
+}
+
+.feature-text p {
+  font-size: 0.78rem;
+  color: #7C6C58;
+}
+
+.badge-discount {
+  position: absolute;
+  top: 140px;
+  right: 30px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #CB4F1B 0%, #E4A56E 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  color: #666;
-  margin-bottom: 24px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  line-height: 1.1;
+  box-shadow: 0 8px 24px rgba(203, 79, 27, 0.3);
+  border: 3px solid #ffffff;
 }
 
-.register-form #form-message {
-  display: none;
-  margin: 0 0 16px;
-  padding: 10px;
-  border-radius: 7px;
-  font-size: 14px;
-}
-
-.register-form #form-message.error-message {
-  display: block;
-  color: #a61b1b;
-  background: #fff0f0;
-}
-
-label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  margin: 14px 0 6px;
-}
-
-input,
-textarea,
-select {
+.showcase-food-img {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #d0d0d0;
-  border-radius: 7px;
-  font-size: 14px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(66, 52, 30, 0.1);
+  margin-top: 10px;
+}
+
+/* RIGHT SIDE: FORM */
+.form-side {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-back-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+}
+
+.top-back-link a {
+  color: #7C6C58;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.top-back-link a:hover {
+  color: #CB4F1B;
+}
+
+.form-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #42341E;
+  margin-bottom: 4px;
+}
+
+.form-header p {
+  font-size: 0.86rem;
+  color: #7C6C58;
+  margin-bottom: 22px;
+}
+
+.form-header p span {
+  color: #CB4F1B;
+  font-weight: 700;
+}
+
+.register-form,
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.input-field-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.field-icon {
+  position: absolute;
+  left: 16px;
+  color: #A39380;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.input-field-box input,
+.input-field-box select {
+  width: 100%;
+  padding: 13px 16px 13px 44px;
+  background: #F9F5EF;
+  border: 1px solid rgba(66, 52, 30, 0.12);
+  border-radius: 14px;
+  font-size: 0.88rem;
+  color: #42341E;
   outline: none;
+  transition: all 0.25s ease;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #e85d04;
-  box-shadow: 0 0 0 3px rgba(232, 93, 4, 0.15);
+.input-field-box input:focus,
+.input-field-box select:focus {
+  border-color: #CB4F1B;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(203, 79, 27, 0.12);
 }
 
-textarea {
-  min-height: 85px;
-  resize: vertical;
-}
-
-button {
-  width: 100%;
-  margin-top: 22px;
-  padding: 13px;
-  border: none;
-  border-radius: 7px;
-  background-color: #e85d04;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+.input-field-box select {
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-button:hover {
-  background-color: #c94c00;
+.forgot-link-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+  margin-bottom: 2px;
 }
 
-.register-form .login-link {
-  margin: 18px 0 0;
-  font-size: 14px;
-}
-
-.login-link a {
-  color: #e85d04;
-  font-weight: bold;
+.forgot-link-wrap a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #7C6C58;
   text-decoration: none;
 }
 
-.login-link a:hover {
+.forgot-link-wrap a:hover {
+  color: #CB4F1B;
   text-decoration: underline;
+}
+
+.btn-submit-signup,
+.btn-submit-login {
+  width: 100%;
+  height: 48px;
+  margin-top: 6px;
+  background: linear-gradient(135deg, #CB4F1B 0%, #E4A56E 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(203, 79, 27, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-submit-signup:hover,
+.btn-submit-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(203, 79, 27, 0.35);
+}
+
+.divider-row {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 16px 0 12px;
+}
+
+.divider-row::before,
+.divider-row::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(66, 52, 30, 0.10);
+}
+
+.divider-row span {
+  padding: 0 12px;
+  color: #A39380;
+  font-size: 0.78rem;
+}
+
+.social-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 100%;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid rgba(66, 52, 30, 0.12);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #42341E;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background: #F9F5EF;
+}
+
+.switch-link {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.84rem;
+  color: #7C6C58;
+}
+
+.switch-link a {
+  color: #CB4F1B;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#form-message {
+  display: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#form-message.error-message {
+  display: block;
+  background: rgba(198, 40, 40, 0.08);
+  color: #c62828;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+}
+
+#form-message.success-message {
+  display: block;
+  background: rgba(106, 136, 79, 0.08);
+  color: #6A884F;
+  border: 1px solid rgba(106, 136, 79, 0.2);
+}
+
+@media (max-width: 860px) {
+  .nutribite-card {
+    grid-template-columns: 1fr;
+  }
+  .showcase-side {
+    display: none;
+  }
 }

@@ -1,0 +1,243 @@
+@charset "UTF-8";
+
+/* ===== CHECKOUT, ORDER CONFIRMATION & ORDER HISTORY — APRYCOT THEME ===== */
+
+.checkout-page {
+    min-height: 100vh;
+    padding: 100px 8% 70px;
+    color: #42341E;
+    background: #FBF4EB;
+}
+
+.checkout-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.checkout-title-area h1 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: #42341E;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #CB4F1B;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: #A33A0F;
+    transform: translateX(-4px);
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 28px;
+    align-items: start;
+}
+
+.form-card {
+    background: #ffffff;
+    border: 1px solid rgba(66, 52, 30, 0.08);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(66, 52, 30, 0.05);
+}
+
+.form-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(203, 79, 27, 0.10);
+    border: 1px solid rgba(203, 79, 27, 0.15);
+    color: #CB4F1B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.form-card-header h2 {
+    font-size: 1.2rem;
+    color: #42341E;
+    font-weight: 700;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #42341E;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    background: #F9F5EF;
+    border: 1px solid rgba(66, 52, 30, 0.08);
+    border-radius: 12px;
+    color: #42341E;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: #CB4F1B;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(203, 79, 27, 0.12);
+}
+
+.payment-card-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: #F9F5EF;
+    border: 2px solid transparent;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+}
+
+.payment-option-card input[type="radio"]:checked + .payment-card-content {
+    border-color: #CB4F1B;
+    background: rgba(203, 79, 27, 0.06);
+    box-shadow: 0 2px 12px rgba(203, 79, 27, 0.10);
+}
+
+.payment-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #42341E;
+}
+
+.checkout-summary-card {
+    background: #ffffff;
+    border: 1px solid rgba(66, 52, 30, 0.08);
+    border-radius: 24px;
+    padding: 26px;
+    box-shadow: 0 4px 20px rgba(66, 52, 30, 0.05);
+}
+
+.summary-item-name {
+    font-size: 0.92rem;
+    color: #42341E;
+    font-weight: 500;
+}
+
+.place-order-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 16px;
+    background: linear-gradient(135deg, #CB4F1B 0%, #E4A56E 100%);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(203, 79, 27, 0.25);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.place-order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(203, 79, 27, 0.35);
+}
+
+/* Order Confirmation Card */
+.confirmation-card {
+    background: #ffffff;
+    border: 1px solid rgba(66, 52, 30, 0.08);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    max-width: 620px;
+    margin: 40px auto;
+    box-shadow: 0 8px 40px rgba(66, 52, 30, 0.08);
+}
+
+.success-icon-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(106, 136, 79, 0.10);
+    border: 2px solid #6A884F;
+    color: #6A884F;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.confirmation-card h1 {
+    font-size: 2rem;
+    color: #42341E;
+    margin-bottom: 8px;
+}
+
+.receipt-box {
+    background: #F9F5EF;
+    border: 1px dashed rgba(66, 52, 30, 0.10);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.receipt-val {
+    color: #42341E;
+    font-weight: 600;
+}
+
+/* Order History Card */
+.history-card {
+    background: #ffffff;
+    border: 1px solid rgba(66, 52, 30, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(66, 52, 30, 0.05);
+    transition: all 0.3s ease;
+}
+
+.order-id-tag {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #42341E;
+}
+
+.status-pill {
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    background: rgba(106, 136, 79, 0.10);
+    color: #6A884F;
+    border: 1px solid rgba(106, 136, 79, 0.2);
+}
+
+.total-amount-val {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #CB4F1B;
+}

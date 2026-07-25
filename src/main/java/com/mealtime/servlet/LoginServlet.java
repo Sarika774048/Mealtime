@@ -27,10 +27,22 @@ public class LoginServlet extends HttpServlet{
 
 		HttpSession session = req.getSession();
 		try {
-			int res = new UserDaoImple().getUserByEmailAndPassword(email.trim(), password);
+			UserDaoImple userDao = new UserDaoImple();
+			int res = userDao.getUserByEmailAndPassword(email.trim(), password);
 			if (res == 1) {
 				session.setAttribute("email", email.trim());
-				resp.sendRedirect("Restaurant.jsp");
+				com.mealtime.model.User user = userDao.getUserByEmail(email.trim());
+				if (user != null) {
+					session.setAttribute("user", user);
+				}
+
+				String redirectUrl = (String) session.getAttribute("redirectAfterLogin");
+				if (redirectUrl != null && !redirectUrl.isEmpty()) {
+					session.removeAttribute("redirectAfterLogin");
+					resp.sendRedirect(redirectUrl);
+				} else {
+					resp.sendRedirect("cart.jsp");
+				}
 			} else {
 				resp.sendRedirect("login.html?error=Invalid+email+or+password.");
 			}

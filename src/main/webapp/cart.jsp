@@ -23,6 +23,9 @@
 
     Object sessionRestaurantId = session.getAttribute("restaurantId");
     String backToMenuUrl = (sessionRestaurantId != null) ? "menu?restaurantId=" + sessionRestaurantId : "home";
+
+    boolean isLoggedIn = (session.getAttribute("user") != null || session.getAttribute("email") != null);
+    String checkoutTargetUrl = isLoggedIn ? "checkout.jsp" : "login.html?error=Please+log+in+or+sign+up+to+proceed+with+checkout.";
 %>
 
 <!DOCTYPE html>
@@ -33,15 +36,15 @@
     <title>Your Cart | Mealtime</title>
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/cart.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=999">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/cart.css?v=999">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #FBF4EB !important; color: #42341E !important;">
 
     <!-- Header / Navbar -->
     <header class="navbar">
@@ -175,8 +178,8 @@
                         <span>Total Payable</span>
                         <span>₹<%= String.format("%.2f", grandTotal) %></span>
                     </div>
-
-                    <a href="#" class="checkout-btn">
+                    
+                    <a href="<%= checkoutTargetUrl %>" class="checkout-btn">
                         <span>Proceed to Checkout</span> →
                     </a>
                 </div>

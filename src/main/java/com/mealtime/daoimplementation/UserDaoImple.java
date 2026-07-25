@@ -27,6 +27,7 @@ public class UserDaoImple implements UserDao {
 	
 	// Query adjusted to match the new encryption verification logic
 	private static final String GET_USER_BY_EMAIL = "SELECT `password` FROM `users` WHERE `email` = ?";
+	private static final String GET_USER_FULL_BY_EMAIL = "SELECT * FROM `users` WHERE `email` = ?";
 
 	// Helper method to hash plaintext strings into SHA-256 strings using standard Java
 	private String hashPassword(String plaintextPassword) {
@@ -70,6 +71,21 @@ public class UserDaoImple implements UserDao {
 			 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
 			
 			preparedStatement.setInt(1, userId);
+			try (ResultSet res = preparedStatement.executeQuery()) {
+				return extractUser(res);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		try (Connection connection = DBConnection.getConnection();
+			 PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_FULL_BY_EMAIL)) {
+			
+			preparedStatement.setString(1, email);
 			try (ResultSet res = preparedStatement.executeQuery()) {
 				return extractUser(res);
 			}
