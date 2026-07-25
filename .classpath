@@ -23,5 +23,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jbcrypt-0.4-javadoc.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

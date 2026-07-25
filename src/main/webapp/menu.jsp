@@ -1,3 +1,5 @@
+<%@page import="com.mealtime.model.Restaurant"%>
+<%@page import="com.mealtime.daoimplementation.RestaurantDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import="java.util.*" %>
@@ -20,6 +22,8 @@
 </head>
 
 <body>
+
+
     <main class="menu-page">
 
         <a href="home" class="back-link">← Back to restaurants</a>
@@ -32,11 +36,19 @@
                 src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85"
                 alt="Restaurant image">
 
+
+<% int restaurantId =  Integer.parseInt(request.getParameter("restaurantId")); 
+	RestaurantDaoImpl restaurantDaoImpl = new RestaurantDaoImpl();
+	Restaurant restaurant = restaurantDaoImpl.getRestaurat(restaurantId);
+
+%>
+
             <div class="restaurant-banner-content">
-                <h1 id="restaurantName">Restaurant Name</h1>
+                <h1 id="restaurantName"><%= restaurant.getName() %></h1>
+                
 
                 <p class="cuisine" id="restaurantCuisine">
-                    Italian, Pizza
+                    <%= restaurant.getCuisineType() %>
                 </p>
 
                 <p class="restaurant-description">
@@ -45,8 +57,8 @@
                 </p>
 
                 <div class="restaurant-details">
-                    <span class="rating" id="restaurantRating">★ 4.5</span>
-                    <span class="detail-pill" id="restaurantEta">⚡ 30–40 min</span>
+                    <span class="rating" id="restaurantRating">★ <%= restaurant.getRating() %></span>
+                    <span class="detail-pill" id="restaurantEta">⚡ <%= restaurant.getEta() %> min</span>
                     <span class="detail-pill">₹250 for one</span>
                     <span class="detail-pill">Open now</span>
                 </div>
@@ -64,20 +76,18 @@
             
             <%
             List<Menu> menu = (List<Menu>)request.getAttribute("menu");
-                    		
-            for(Menu m : menu){
-            	
-            	%>
-            	
+            if (menu != null && !menu.isEmpty()) {
+                for(Menu m : menu){
+            %>
             	   <article class="menu-item-card">
                     <img
                         src="<%= m.getImagePath() %>"
-                        alt="Margherita Pizza">
+                        alt="<%= m.getItemName() %>">
 
                     <div class="menu-item-content">
                         <div class="menu-item-title">
                             <h3><%= m.getItemName() %></h3>
-                            <span class="food-price">₹<%=m.getPrice() %></span>
+                            <span class="food-price">₹<%= m.getPrice() %></span>
                         </div>
 
                         <p>
@@ -85,17 +95,31 @@
                         </p>
 
                         <div class="menu-item-footer">
-                            <span>★ <%= m.getRatings() %></span>
-                            <span class="availability"><%= m.isAvailable() %></span>
+                            <div class="menu-item-meta">
+                                <span class="rating-pill">★ <%= m.getRatings() %></span>
+                                <span class="<%= m.isAvailable() ? "availability" : "not-available" %>">
+                                    <%= m.isAvailable() ? "Available" : "Sold Out" %>
+                                </span>
+                            </div>
+
+                            <form action="CartServlet" method="post" class="add-to-cart-form">
+                                <input type="hidden" name="menuId" value="<%= m.getMenuId() %>">
+                                <input type="hidden" name="restaurantId" value="<%= m.getRestaurantId() %>">
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="action" value="add">
+                                <button style="background-color: green; padding : 10px; type="submit" class="add-to-cart-btn" <%= !m.isAvailable() ? "disabled" : "" %>>
+                                    <span " class="cart-icon">🛒</span> Add to Cart
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </article>
-
-                
-            	
-            	
-            	<%
-            	
+            <%
+                }
+            } else {
+            %>
+                <p class="no-data">No menu items available for this restaurant.</p>
+            <%
             }
             %>
 

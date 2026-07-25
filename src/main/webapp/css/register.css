@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+}
+
+.register-container {
+  width: 100%;
+  max-width: 460px;
+}
+
+.register-form {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.register-form h1 {
+  color: #e85d04;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.register-form > p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.register-form #form-message {
+  display: none;
+  margin: 0 0 16px;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.register-form #form-message.error-message {
+  display: block;
+  color: #a61b1b;
+  background: #fff0f0;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 14px 0 6px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #e85d04;
+  box-shadow: 0 0 0 3px rgba(232, 93, 4, 0.15);
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px;
+  border: none;
+  border-radius: 7px;
+  background-color: #e85d04;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c94c00;
+}
+
+.register-form .login-link {
+  margin: 18px 0 0;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #e85d04;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

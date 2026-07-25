@@ -13,12 +13,25 @@ import com.mealtime.util.DBConnection;
 
 public class MenuDaoImpl implements MenuDao{
 	private static final String GET_MENU_BY_RESTAURANT = "SELECT * FROM menu WHERE restaurant_id = ?";
-	
+	private static final String GET_MENU_BY_ID = "SELECT * FROM menu WHERE menu_Id = ?";
 
 	@Override
 	public void getMenu(int menuId) {
-		// TODO Auto-generated method stub
-		
+		getMenuById(menuId);
+	}
+
+	public Menu getMenuById(int menuId) {
+		try (Connection connection = DBConnection.getConnection();
+				PreparedStatement statement = connection.prepareStatement(GET_MENU_BY_ID)) {
+			statement.setInt(1, menuId);
+			ResultSet executeQuery = statement.executeQuery();
+			if (executeQuery.next()) {
+				return extractResult(executeQuery);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override

@@ -18,11 +18,9 @@ public class User {
 	public User() {
 	}
 
-	public User(int userId, String name, String username, String password, String email, String phone, String address,
-			String role, Date createdDate, Date lastLoginDate) {
-		super();
-		this.userId = userId;
-		this.name = name;
+	public User(String name, String username, String password, String email, String phone, String address,
+		String role, Date createdDate, Date lastLoginDate) {
+		this.name = name; 
 		this.username = username;
 		this.password = password;
 		this.email = email;

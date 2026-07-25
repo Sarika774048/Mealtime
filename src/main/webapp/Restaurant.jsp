@@ -33,8 +33,8 @@
         </nav>
 
         <div class="nav-actions">
-            <a href="#" class="login-link">Log in</a>
-            <a href="#" class="signup-btn">Sign up</a>
+            <a href="login.html" class="login-link">Log in</a>
+            <a href="register.html" class="signup-btn">Sign up</a>
         </div>
     </header>
 
