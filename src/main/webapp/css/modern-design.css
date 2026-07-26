@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/* ===== MEALTIME — CLEAN, FAST & ELEGANT DESIGN SYSTEM ===== */
+
+:root {
+    --brand-primary: #CB4F1B;
+    --brand-secondary: #D9381E;
+    --brand-gradient: linear-gradient(135deg, #CB4F1B 0%, #D9381E 100%);
+    --gold-accent: #FFC107;
+    --gold-gradient: linear-gradient(135deg, #FFC107 0%, #F59E0B 100%);
+    --bg-warm: #F8F3EC;
+    --card-white: #FFFFFF;
+    --text-heading: #3D3121;
+    --text-body: #7A6C5B;
+    --border-warm: #EFE6D8;
+    --shadow-card: 0 6px 24px rgba(66, 52, 30, 0.05);
+    --shadow-card-hover: 0 10px 32px rgba(66, 52, 30, 0.09);
+}
+
+body {
+    background-color: #F8F3EC;
+    color: #42341E;
+    overflow-x: hidden;
+}
+
+/* Hide Cursor Spotlight */
+#cursorSpotlight {
+    display: none !important;
+}
+
+/* ===== CLEAN CARD HOVER STYLING ===== */
+.empty-cart-card,
+.bill-summary-card,
+.form-card,
+.history-card,
+.cart-features-bar,
+.checkout-summary-card,
+.swiggy-menu-item,
+.confirmation-card {
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease !important;
+    box-shadow: var(--shadow-card) !important;
+    transform: none !important;
+}
+
+.empty-cart-card:hover,
+.bill-summary-card:hover,
+.form-card:hover,
+.history-card:hover,
+.cart-features-bar:hover,
+.checkout-summary-card:hover,
+.confirmation-card:hover {
+    box-shadow: var(--shadow-card-hover) !important;
+    border-color: #E6D9C5 !important;
+}
+
+/* ===== BUTTON STYLING & CLEAN FEEDBACK ===== */
+button, .explore-btn, .checkout-btn, .place-order-btn, .coupon-btn, .update-cart-btn, .btn-secondary, .signup-btn {
+    transition: background 0.2s ease, opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+    transform: none !important;
+}
+
+/* ===== FLOATING TOAST NOTIFICATIONS ===== */
+#toastContainer {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.toast-notification {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: #ffffff;
+    border: 1px solid #EFE6D8;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(66, 52, 30, 0.12);
+    color: #3D3121;
+    font-weight: 700;
+    font-size: 0.92rem;
+    animation: toastSlideIn 0.3s ease forwards;
+}
+
+@keyframes toastSlideIn {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.toast-notification.hide {
+    animation: toastSlideOut 0.3s ease forwards;
+}
+
+@keyframes toastSlideOut {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(20px); opacity: 0; }
+}
+
+.toast-icon {
+    font-size: 1.3rem;
+}

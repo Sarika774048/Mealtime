@@ -122,22 +122,62 @@ public class OrderItemDaoImpl implements OrderItemDao{
 	}
 	
 	
-	private OrderItem extractOrderItem(ResultSet executeQuery) {
-		
+	private OrderItem extractOrderItem(ResultSet rs) {
 		OrderItem orderItem = new OrderItem();
 		
 		try {
+			// orderItemId
+			try {
+				orderItem.setOrderItemId(rs.getInt("orderItemId"));
+			} catch (SQLException e1) {
+				try {
+					orderItem.setOrderItemId(rs.getInt("orderitemid"));
+				} catch (SQLException e2) {
+					try { orderItem.setOrderItemId(rs.getInt("order_item_id")); } catch (SQLException ignored) {}
+				}
+			}
+
+			// orderId
+			try {
+				orderItem.setOrderId(rs.getInt("orderId"));
+			} catch (SQLException e1) {
+				try {
+					orderItem.setOrderId(rs.getInt("orderid"));
+				} catch (SQLException e2) {
+					try { orderItem.setOrderId(rs.getInt("order_id")); } catch (SQLException ignored) {}
+				}
+			}
+
+			// menuId
+			try {
+				orderItem.setMenuId(rs.getInt("menuId"));
+			} catch (SQLException e1) {
+				try {
+					orderItem.setMenuId(rs.getInt("menuid"));
+				} catch (SQLException e2) {
+					try { orderItem.setMenuId(rs.getInt("menu_id")); } catch (SQLException ignored) {}
+				}
+			}
+
+			// quantity
+			try {
+				orderItem.setQuantity(rs.getInt("quantity"));
+			} catch (SQLException ignored) {}
+
+			// totalPrice
+			try {
+				orderItem.setTotalPrice(rs.getDouble("totalPrice"));
+			} catch (SQLException e1) {
+				try {
+					orderItem.setTotalPrice(rs.getDouble("totalprice"));
+				} catch (SQLException e2) {
+					try { orderItem.setTotalPrice(rs.getDouble("total_price")); } catch (SQLException ignored) {}
+				}
+			}
 			
-			orderItem.setOrderItemId(executeQuery.getInt("orderItemId"));
-			orderItem.setOrderId(executeQuery.getInt("orderId"));
-			orderItem.setMenuId(executeQuery.getInt("menuId"));
-			orderItem.setQuantity(executeQuery.getInt("quantity"));
-			orderItem.setTotalPrice(executeQuery.getDouble("totalPrice"));
-			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 		return orderItem;
 	}

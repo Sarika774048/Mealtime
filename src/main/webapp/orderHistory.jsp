@@ -40,12 +40,109 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=999">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/cart.css?v=999">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/checkout.css?v=999">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/modern-design.css?v=999">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Modern Web Engine JS -->
+    <script src="<%= request.getContextPath() %>/js/modern-app.js" defer></script>
 
+    <!-- Embedded High-Priority Modern CSS Styling for Order History -->
+    <style>
+        body {
+            background-color: #F8F3EC !important;
+            color: #42341E !important;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        }
+
+        .history-card {
+            background: #ffffff !important;
+            border: 1px solid #EFE6D8 !important;
+            border-radius: 20px !important;
+            padding: 28px 32px !important;
+            margin-bottom: 24px !important;
+            box-shadow: 0 6px 24px rgba(66, 52, 30, 0.05) !important;
+            transition: all 0.25s ease !important;
+        }
+
+        .history-card:hover {
+            box-shadow: 0 10px 32px rgba(66, 52, 30, 0.08) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .history-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding-bottom: 16px !important;
+            border-bottom: 1px solid #EFE6D8 !important;
+            margin-bottom: 18px !important;
+        }
+
+        .order-id-tag {
+            font-size: 1.05rem !important;
+            font-weight: 800 !important;
+            color: #3D3121 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        .order-date-text {
+            font-size: 0.84rem !important;
+            color: #8C7B68 !important;
+            font-weight: 500 !important;
+        }
+
+        .status-pill {
+            background: #ECFDF5 !important;
+            color: #047857 !important;
+            border: 1px solid #A7F3D0 !important;
+            padding: 5px 16px !important;
+            border-radius: 20px !important;
+            font-size: 0.85rem !important;
+            font-weight: 800 !important;
+        }
+
+        .history-items-list {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .history-item-row {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 12px 18px !important;
+            background: #FAF6F0 !important;
+            border: 1px solid #EFE6D8 !important;
+            border-radius: 12px !important;
+            font-size: 0.95rem !important;
+            color: #3E3220 !important;
+            font-weight: 600 !important;
+        }
+
+        .history-footer {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding-top: 18px !important;
+            border-top: 1px dashed #DCD1C2 !important;
+            font-size: 0.92rem !important;
+            color: #7A6C5B !important;
+            font-weight: 600 !important;
+        }
+
+        .total-amount-val {
+            font-size: 1.2rem !important;
+            font-weight: 800 !important;
+            color: #CB4F1B !important;
+            background: #FFFBEB !important;
+            border: 1px solid #FDE68A !important;
+            padding: 4px 16px !important;
+            border-radius: 8px !important;
+        }
+    </style>
 </head>
 <body style="background-color: #FBF4EB !important; color: #42341E !important;">
 
@@ -100,14 +197,22 @@
                             <% if (items != null && !items.isEmpty()) { 
                                 for (OrderItem item : items) { 
                                     Menu menuItem = menuDao.getMenuById(item.getMenuId());
-                                    String itemName = (menuItem != null) ? menuItem.getItemName() : "Item #" + item.getMenuId();
+                                    String itemName = (menuItem != null && menuItem.getItemName() != null && !menuItem.getItemName().isEmpty()) 
+                                                     ? menuItem.getItemName() 
+                                                     : "Food Item #" + (item.getMenuId() > 0 ? item.getMenuId() : "1");
+                                    double priceVal = item.getTotalPrice() > 0 ? item.getTotalPrice() : ord.getTotalAmount();
                             %>
                                 <div class="history-item-row">
-                                    <span><%= item.getQuantity() %>x <%= itemName %></span>
-                                    <span>₹<%= String.format("%.2f", item.getTotalPrice()) %></span>
+                                    <span>🍲 <%= item.getQuantity() > 0 ? item.getQuantity() : 1 %>x <%= itemName %></span>
+                                    <span>₹<%= String.format("%.2f", priceVal) %></span>
                                 </div>
                             <%  } 
-                               } %>
+                               } else { %>
+                                <div class="history-item-row">
+                                    <span>🍲 1x Prepared Meal Order</span>
+                                    <span>₹<%= String.format("%.2f", ord.getTotalAmount()) %></span>
+                                </div>
+                            <% } %>
                         </div>
 
                         <div class="history-footer">

@@ -34,9 +34,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= restaurant != null ? restaurant.getName() : "Menu" %> | Mealtime</title>
 
-    <!-- External CSS files with Cache-Buster query parameter ?v=999 -->
+    <!-- External CSS files -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=999">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/menu.css?v=999">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/modern-design.css?v=999">
+
+    <!-- Modern Web Engine JS -->
+    <script src="<%= request.getContextPath() %>/js/modern-app.js" defer></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

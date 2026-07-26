@@ -11,8 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mealtime | Food & Restaurant</title>
 
-    <!-- External Stylesheet Only -->
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=9999999999999">
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=999">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/modern-design.css?v=999">
+
+    <!-- Modern Web Engine JS -->
+    <script src="<%= request.getContextPath() %>/js/modern-app.js" defer></script>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

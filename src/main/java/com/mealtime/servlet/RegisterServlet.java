@@ -19,16 +19,29 @@ public class RegisterServlet extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String name = req.getParameter("name");
-		String username= req.getParameter("username");
-		String password =req.getParameter("password");
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
+		if (phone == null || phone.trim().isEmpty()) {
+			phone = req.getParameter("mobile");
+		}
 		String address = req.getParameter("address");
 		String role = req.getParameter("role");
-		
-		
-		if (name == null || username == null || password == null || email == null || phone == null
-				|| address == null || role == null) {
+
+		if (username == null || username.trim().isEmpty()) {
+			username = email;
+		}
+
+		if (role == null || role.trim().isEmpty()) {
+			role = "Customer";
+		}
+
+		if (name == null || name.trim().isEmpty() ||
+			password == null || password.trim().isEmpty() ||
+			email == null || email.trim().isEmpty() ||
+			phone == null || phone.trim().isEmpty() ||
+			address == null || address.trim().isEmpty()) {
 			resp.sendRedirect("register.html?error=Please+complete+all+fields.");
 			return;
 		}
